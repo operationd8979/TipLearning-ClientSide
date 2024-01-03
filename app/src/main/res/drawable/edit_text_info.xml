@@ -1,0 +1,12 @@
+<!-- res/drawable/custom_edittext_background.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/transparent" />
+            <corners android:radius="8dp"/>
+        </shape>
+    </item>
+
+
+</layer-list>
