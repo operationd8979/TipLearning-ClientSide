@@ -25,6 +25,9 @@
         <activity
             android:name=".RegisterActivity"
             android:exported="true" />
+        <activity
+            android:name=".MainUserActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
