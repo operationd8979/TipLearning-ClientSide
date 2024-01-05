@@ -28,8 +28,6 @@ public class MainUserActivity extends AppCompatActivity {
         String photoUrl = intent.getStringExtra("photoUrl");
         user = new User(email, name, photoUrl);
 
-
-
         init();
     }
 
@@ -63,6 +61,10 @@ public class MainUserActivity extends AppCompatActivity {
 
     private void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    public User getUserData() {
+        return this.user;
     }
 
 }

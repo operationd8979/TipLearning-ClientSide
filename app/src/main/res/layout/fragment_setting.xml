@@ -1,14 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.SettingFragment">
+    tools:context=".fragment.SettingFragment"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ImageView
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/imgAvatarUser"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Setting" />
+        android:layout_height="wrap_content"
+        tools:src="@tools:sample/avatars" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/txtFullNameUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Võ Hoàng Dũng"
+        android:textSize="26dp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textStyle="bold"/>
+    <TextView
+        android:layout_marginBottom="10dp"
+        android:id="@+id/txtEmailUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="operationddd@gmail.com"
+        android:textSize="16dp"
+        android:textAlignment="center"
+        android:textColor="@color/black"/>
+
+    <EditText
+        android:layout_marginBottom="10dp"
+        android:id="@+id/edChangeFullName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Full Name"
+        />
+
+    <EditText
+        android:layout_marginBottom="10dp"
+        android:id="@+id/edPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="Password"
+        />
+
+    <EditText
+        android:layout_marginBottom="10dp"
+        android:id="@+id/edNewPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="Re-Password"
+        />
+
+    <Button
+        android:background="@drawable/button_selector"
+        android:enabled="false"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/btnUpdateProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"/>
+    <EditText
+        android:visibility="invisible"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/edOldPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="Required Old Password"
+        />
+</LinearLayout>
