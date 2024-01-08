@@ -46,22 +46,24 @@
 
     <EditText
         android:layout_marginBottom="10dp"
-        android:id="@+id/edPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:hint="Password"
-        />
-
-    <EditText
-        android:layout_marginBottom="10dp"
         android:id="@+id/edNewPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword"
-        android:hint="Re-Password"
+        android:hint="New Password"
+        />
+
+    <EditText
+        android:visibility="gone"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/edReNewPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="Re-New Password"
+        android:textColorHint="@color/red"
         />
 
     <Button
@@ -76,7 +78,7 @@
         android:textColor="@color/black"
         android:textStyle="bold"/>
     <EditText
-        android:visibility="invisible"
+        android:visibility="gone"
         android:layout_marginBottom="10dp"
         android:id="@+id/edOldPassword"
         android:layout_width="match_parent"
@@ -84,5 +86,17 @@
         android:ems="10"
         android:inputType="textPassword"
         android:hint="Required Old Password"
+        android:textColorHint="@color/red"
         />
+    <Button
+        android:background="@drawable/button_selector"
+        android:enabled="true"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/btnLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"/>
 </LinearLayout>

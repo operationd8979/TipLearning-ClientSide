@@ -2,6 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="red">#F62C1E</color>
     <color name="primary">#03A9F4</color>
     <color name="link">#3F51B5</color>
     <color name="enable_button">#03A9F4</color>

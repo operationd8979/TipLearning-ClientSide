@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void init(){
 
-        SharedPreferences sharedPreferences = getSharedPreferences("user", MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("userdata", MODE_PRIVATE);
         String email = sharedPreferences.getString("email", null);
         String name = sharedPreferences.getString("name", null);
         String photoUrl = sharedPreferences.getString("photoUrl", null);
@@ -91,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
                 String name = account.getDisplayName();
                 String photoUrl = String.valueOf(account.getPhotoUrl());
 
-                SharedPreferences.Editor editor = getSharedPreferences("user", MODE_PRIVATE).edit();
+                SharedPreferences.Editor editor = getSharedPreferences("userdata", MODE_PRIVATE).edit();
                 editor.putString("email", email);
                 editor.putString("name", name);
                 editor.putString("photoUrl", photoUrl);
