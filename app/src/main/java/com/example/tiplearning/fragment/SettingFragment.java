@@ -101,10 +101,10 @@ public class SettingFragment extends Fragment {
             public void afterTextChanged(Editable editable) { }
         });
         Glide.with(this)
-                .load(getUserData().getPhotoUrl())
+                .load(getUserData().getUrlAvatar())
                 .centerCrop()
                 .into(imgAvatar);
-        txtFullName.setText(getUserData().getName());
+        txtFullName.setText(getUserData().getFullName());
         txtEmail.setText(getUserData().getEmail());
         return view;
     }

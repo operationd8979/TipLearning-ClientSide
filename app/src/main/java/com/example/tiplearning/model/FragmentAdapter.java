@@ -12,8 +12,11 @@ import com.example.tiplearning.fragment.SettingFragment;
 
 public class FragmentAdapter extends FragmentStateAdapter {
 
-    public FragmentAdapter(@NonNull MainUserActivity fragment) {
+    private String userId;
+
+    public FragmentAdapter(@NonNull MainUserActivity fragment,String userId) {
         super(fragment);
+        this.userId = userId;
     }
 
     @NonNull
@@ -21,7 +24,7 @@ public class FragmentAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position) {
             case 0:
-                return new ExerciseFragment();
+                return new ExerciseFragment(userId);
             case 1:
                 return new QuizFragment();
             case 2:

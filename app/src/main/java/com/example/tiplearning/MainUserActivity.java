@@ -36,10 +36,11 @@ public class MainUserActivity extends AppCompatActivity {
         mGoogleSignInClient  = GoogleSignIn.getClient(this, gso);
 
         Intent intent = getIntent();
+        String userId = intent.getStringExtra("userId");
         String email = intent.getStringExtra("email");
-        String name = intent.getStringExtra("name");
-        String photoUrl = intent.getStringExtra("photoUrl");
-        user = new User(email, name, photoUrl);
+        String fullName = intent.getStringExtra("fullName");
+        String urlAvatar = intent.getStringExtra("urlAvatar");
+        user = new User(userId, email, fullName, urlAvatar);
 
         init();
     }
@@ -50,7 +51,7 @@ public class MainUserActivity extends AppCompatActivity {
 
     private void initViewPager(){
         viewPager = findViewById(R.id.viewPagerMainUser);
-        FragmentAdapter fragmentAdapter = new FragmentAdapter(this);
+        FragmentAdapter fragmentAdapter = new FragmentAdapter(this,user.getUserId());
         viewPager.setAdapter(fragmentAdapter);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
@@ -77,17 +78,12 @@ public class MainUserActivity extends AppCompatActivity {
     }
 
     public void logout(){
-        mGoogleSignInClient.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                SharedPreferences.Editor editor = getSharedPreferences("userdata", MODE_PRIVATE).edit();
-                editor.clear();
-                editor.apply();
-                Intent intent = new Intent(MainUserActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+        SharedPreferences.Editor editor = getSharedPreferences("userdata", MODE_PRIVATE).edit();
+        editor.clear();
+        editor.apply();
+        Intent intent = new Intent(MainUserActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     public User getUserData() {

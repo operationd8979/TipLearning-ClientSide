@@ -1,14 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.ResultFragment">
+    tools:context=".fragment.ResultFragment"
+    android:weightSum="10"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:text="Thành tích của bạn"
+        android:textSize="42dp"
+        android:textColor="@color/red"
+        android:textStyle="bold"
+        android:gravity="center"/>
 
-</FrameLayout>
+    <TextView
+        android:background="@drawable/button_quiz"
+        android:id="@+id/txtResultAvgScore"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:text="85/100"
+        android:textSize="60dp"
+        android:textColor="@color/primary"
+        android:textStyle="bold"
+        android:gravity="center"/>
+    <TextView
+        android:id="@+id/txtResultCountExams"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="156 bài thi"
+        android:textSize="30dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:gravity="center"/>
+    <TextView
+        android:id="@+id/txtResultNumber"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="Top: 5000"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:textColor="@color/hot_pink"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/txtResultMajor"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:text="Chuyên môn: Tiếng Anh, Toán, Vật Lý"
+        android:textSize="30dp"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+</LinearLayout>

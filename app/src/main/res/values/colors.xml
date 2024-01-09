@@ -3,8 +3,12 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red">#F62C1E</color>
+    <color name="hot_pink">#E91E63</color>
     <color name="primary">#03A9F4</color>
     <color name="link">#3F51B5</color>
     <color name="enable_button">#03A9F4</color>
     <color name="disable_button">#9E9E9E</color>
+    <color name="non_checked">#373737</color>
+    <color name="checked">#349DF1</color>
+    <color name="correct">#12C819</color>
 </resources>
