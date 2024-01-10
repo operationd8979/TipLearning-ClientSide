@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.SettingFragment"
@@ -42,6 +43,7 @@
         android:ems="10"
         android:inputType="text"
         android:hint="Full Name"
+        android:textColorHint="@color/disable_button"
         />
 
     <EditText
@@ -52,6 +54,7 @@
         android:ems="10"
         android:inputType="textPassword"
         android:hint="New Password"
+        android:textColorHint="@color/disable_button"
         />
 
     <EditText

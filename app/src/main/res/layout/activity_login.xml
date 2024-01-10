@@ -47,6 +47,7 @@
             android:ems="10"
             android:inputType="text"
             android:hint="email"
+            android:textColorHint="@color/disable_button"
             android:textSize="24dp"
             tools:layout_editor_absoluteX="48dp"
             tools:layout_editor_absoluteY="120dp" />
@@ -59,6 +60,7 @@
             android:ems="10"
             android:inputType="textPassword"
             android:hint="password"
+            android:textColorHint="@color/disable_button"
             android:textSize="24dp"
             tools:layout_editor_absoluteX="48dp"
             tools:layout_editor_absoluteY="120dp" />

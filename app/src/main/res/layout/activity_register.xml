@@ -47,6 +47,7 @@
             android:inputType="text"
             android:hint="email"
             android:textSize="24dp"
+            android:textColorHint="@color/disable_button"
             tools:layout_editor_absoluteX="48dp"
             tools:layout_editor_absoluteY="120dp" />
         <EditText
@@ -58,6 +59,7 @@
             android:inputType="text"
             android:hint="full name"
             android:textSize="24dp"
+            android:textColorHint="@color/disable_button"
             tools:layout_editor_absoluteX="48dp"
             tools:layout_editor_absoluteY="120dp" />
         <EditText
@@ -69,6 +71,7 @@
             android:inputType="textPassword"
             android:hint="pasword"
             android:textSize="24dp"
+            android:textColorHint="@color/disable_button"
             tools:layout_editor_absoluteX="48dp"
             tools:layout_editor_absoluteY="120dp" />
         <EditText
@@ -80,6 +83,7 @@
             android:inputType="textPassword"
             android:hint="retype-password"
             android:textSize="24dp"
+            android:textColorHint="@color/disable_button"
             tools:layout_editor_absoluteX="48dp"
             tools:layout_editor_absoluteY="120dp" />
     </LinearLayout>

@@ -59,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
             intent.putExtra("fullName", fullName);
             intent.putExtra("urlAvatar", urlAvatar);
             startActivity(intent);
+            finish();
         }
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -188,6 +189,7 @@ public class LoginActivity extends AppCompatActivity {
         intent.putExtra("fullName", fullName);
         intent.putExtra("urlAvatar", urlAvatar);
         startActivity(intent);
+        finish();
 
     }
 

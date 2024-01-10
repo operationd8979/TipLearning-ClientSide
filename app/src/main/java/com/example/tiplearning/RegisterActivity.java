@@ -91,6 +91,7 @@ public class RegisterActivity extends AppCompatActivity {
         intent.putExtra("fullName", fullName);
         intent.putExtra("urlAvatar", urlAvatar);
         startActivity(intent);
+        finish();
 
     }
 
