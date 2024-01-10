@@ -43,6 +43,7 @@
         android:ems="10"
         android:inputType="text"
         android:hint="Full Name"
+        android:textColor="@color/black"
         android:textColorHint="@color/disable_button"
         />
 
@@ -54,6 +55,7 @@
         android:ems="10"
         android:inputType="textPassword"
         android:hint="New Password"
+        android:textColor="@color/black"
         android:textColorHint="@color/disable_button"
         />
 
@@ -66,6 +68,7 @@
         android:ems="10"
         android:inputType="textPassword"
         android:hint="Re-New Password"
+        android:textColor="@color/black"
         android:textColorHint="@color/red"
         />
 
@@ -89,6 +92,7 @@
         android:ems="10"
         android:inputType="textPassword"
         android:hint="Required Old Password"
+        android:textColor="@color/black"
         android:textColorHint="@color/red"
         />
     <Button

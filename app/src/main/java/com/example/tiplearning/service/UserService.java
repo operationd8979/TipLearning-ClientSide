@@ -1,9 +1,11 @@
 package com.example.tiplearning.service;
 
 
+import com.example.tiplearning.model.runtime.HttpResponse;
 import com.example.tiplearning.model.runtime.MarkRecord;
 import com.example.tiplearning.model.runtime.QuizResponse;
 import com.example.tiplearning.model.runtime.RequestFindQuiz;
+import com.example.tiplearning.model.runtime.UpdateInfoRequest;
 
 import java.util.List;
 
@@ -26,7 +28,10 @@ public interface UserService {
 //    Call<String> query(@Body RequestFindQuiz requestFindQuiz, @Query("userId") String userId);
 
     @GET("user/query/{questions}")
-    Call<String> query(@Path("questions") String questions, @Query("userId") String userId);
+    Call<List<String>> query(@Path("questions") String questions, @Query("userId") String userId);
+
+    @POST("user/updateInfo")
+    Call<HttpResponse> updateInfo(@Body UpdateInfoRequest updateInfoRequest, @Query("userId") String userId);
 
 
 }

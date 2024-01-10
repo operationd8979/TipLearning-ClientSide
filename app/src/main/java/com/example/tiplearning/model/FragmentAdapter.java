@@ -30,7 +30,7 @@ public class FragmentAdapter extends FragmentStateAdapter {
             case 2:
                 return new ResultFragment();
             default:
-                return new SettingFragment();
+                return new SettingFragment(userId);
         }
     }
 

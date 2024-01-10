@@ -60,7 +60,7 @@ public class QuizFragment extends Fragment {
     private Button btnRecognizeText;
     private Button btnQuizFind;
     private ShapeableImageView imgTake;
-    private EditText etRecognizedText;
+    private static EditText etRecognizedText;
     private static String userId;
 
     private Uri imageUri = null;
@@ -166,7 +166,7 @@ public class QuizFragment extends Fragment {
                 question = "";
                 i++;
             }
-            question+=s;
+            question+= " "+s;
         }
         finalList.add(question);
         String questions = "";
@@ -179,19 +179,24 @@ public class QuizFragment extends Fragment {
     }
 
     private static void callApiQuerySearchQuiz(String questions) {
-        Call<String> call = RetrofitInstance.getRetrofitInstance().create(UserService.class).query(questions,userId);
-        call.enqueue(new Callback<String>() {
+        Call<List<String>> call = RetrofitInstance.getRetrofitInstance().create(UserService.class).query(questions,userId);
+        call.enqueue(new Callback<List<String>>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(Call<List<String>> call, Response<List<String>> response) {
                 if (response.isSuccessful()) {
-                    String data = response.body();
-                    Log.d("ChipEnd", data);
+                    List<String> data = response.body();
+                    etRecognizedText.setText("");
+                    int i = 1;
+                    for(String s:data){
+                        Log.d("ChipEnd", s);
+                        etRecognizedText.append(i+++"."+s+"\n");
+                    }
                 } else {
                     Log.d("ChipEnd", "Error: " + response.message());
                 }
             }
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<List<String>> call, Throwable t) {
                 Log.e("Network Request", "Error", t);
             }
         });
