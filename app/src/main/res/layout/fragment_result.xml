@@ -8,57 +8,63 @@
     android:weightSum="10"
     android:orientation="vertical">
 
-    <TextView
+    <LinearLayout
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
-        android:text="Thành tích của bạn"
-        android:textSize="42dp"
-        android:textColor="@color/red"
-        android:textStyle="bold"
-        android:gravity="center"/>
+        android:layout_weight="1">
+        <Button
+            android:layout_margin="10dp"
+            android:id="@+id/btnTakeImageCreateQuiz"
+            android:background="@drawable/button_selector"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Take image"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="@color/white"/>
 
-    <TextView
-        android:background="@drawable/button_quiz"
-        android:id="@+id/txtResultAvgScore"
+    </LinearLayout>
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
-        android:text="85/100"
-        android:textSize="60dp"
-        android:textColor="@color/primary"
-        android:textStyle="bold"
-        android:gravity="center"/>
-    <TextView
-        android:id="@+id/txtResultCountExams"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="156 bài thi"
-        android:textSize="30dp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:gravity="center"/>
-    <TextView
-        android:id="@+id/txtResultNumber"
-        android:padding="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="Top: 5000"
-        android:textSize="30dp"
-        android:gravity="center"
-        android:textColor="@color/hot_pink"
-        android:textStyle="bold" />
-    <TextView
-        android:id="@+id/txtResultMajor"
-        android:padding="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:text="Chuyên môn: Tiếng Anh, Toán, Vật Lý"
-        android:textSize="30dp"
-        android:textColor="@color/black"
-        android:textStyle="bold" />
+        android:layout_weight="9">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Recognized Text"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"/>
+            <EditText
+                android:id="@+id/etCreateQuiz"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                />
+
+            <Button
+                android:id="@+id/btnCreateQuiz"
+                android:background="@drawable/button_selector"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Gửi câu hỏi"
+                android:textSize="30dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

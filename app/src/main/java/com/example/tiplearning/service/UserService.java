@@ -19,7 +19,7 @@ import retrofit2.http.Query;
 public interface UserService {
 
     @GET("user/gets/3")
-    Call<List<QuizResponse>> getQuizzes(@Query("userId") String userId);
+    Call<List<QuizResponse>> getQuizzes(@Query("type") String type,@Query("userId") String userId);
 
     @POST("user/marks")
     Call<MarkRecord> mark(@Body MarkRecord markRecord,@Query("userId") String userId);
@@ -32,6 +32,9 @@ public interface UserService {
 
     @POST("user/updateInfo")
     Call<HttpResponse> updateInfo(@Body UpdateInfoRequest updateInfoRequest, @Query("userId") String userId);
+
+    @GET("user/reportQuiz")
+    Call<String> reportQuiz(@Query("quizId") String quizId,@Query("userId") String userId);
 
 
 }

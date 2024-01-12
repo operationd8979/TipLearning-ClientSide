@@ -28,7 +28,7 @@ public class FragmentAdapter extends FragmentStateAdapter {
             case 1:
                 return new QuizFragment(userId);
             case 2:
-                return new ResultFragment();
+                return new ResultFragment(userId);
             default:
                 return new SettingFragment(userId);
         }

@@ -12,7 +12,7 @@
 
     <item
         android:id="@+id/navigation_result"
-        android:title="Result"
+        android:title="Support"
         android:icon="@drawable/navigation_result_icon_24" />
 
     <item

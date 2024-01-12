@@ -186,7 +186,7 @@ public class QuizFragment extends Fragment {
                 if (response.isSuccessful()) {
                     List<String> data = response.body();
                     etRecognizedText.setText("");
-                    int i = 1;
+                    int i = 0;
                     for(String s:data){
                         Log.d("ChipEnd", s);
                         etRecognizedText.append(i+++"."+s+"\n");

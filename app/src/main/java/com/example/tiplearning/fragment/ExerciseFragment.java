@@ -12,7 +12,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,7 +42,7 @@ public class ExerciseFragment extends Fragment {
     private RecyclerView recyclerQuizzes;
     private View view;
     private String userId;
-
+    private String type = "ALL";
 
     public ExerciseFragment(String userId) {
         this.userId = userId;
@@ -63,9 +68,25 @@ public class ExerciseFragment extends Fragment {
     }
 
     private void init(){
+        RadioGroup radioGroup = view.findViewById(R.id.rdGroupType);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.rdAll) {
+                    type = "ALL";
+                } else if (checkedId == R.id.rdEnglist) {
+                    type = "ENGLISH";
+                } else if (checkedId == R.id.rdIt) {
+                    type = "IT";
+                } else if (checkedId == R.id.rdDifferent) {
+                    type = "DIFFERENT";
+                }
+            }
+        });
+
         recyclerQuizzes = view.findViewById(R.id.recyclerQuizzes);
         recyclerQuizzes.setLayoutManager(new LinearLayoutManager(getContext()));
-        quizzesAdapter = new QuizzesAdapter(getContext(),new ArrayList<>(),view.findViewById(R.id.txtChecks));
+        quizzesAdapter = new QuizzesAdapter(getContext(),new ArrayList<>(),view.findViewById(R.id.txtChecks),userId);
         recyclerQuizzes.setAdapter(quizzesAdapter);
 
         Button btnRandQuizzes = view.findViewById(R.id.btnGetQuizzes);
@@ -114,12 +135,12 @@ public class ExerciseFragment extends Fragment {
         TextView txtScore = view.findViewById(R.id.txtScore);
         txtChecks.setText("0/"+list.size());
         txtScore.setText("Điểm: 0/100");
-        quizzesAdapter = new QuizzesAdapter(getContext(),list,view.findViewById(R.id.txtChecks));
+        quizzesAdapter = new QuizzesAdapter(getContext(),list,view.findViewById(R.id.txtChecks),userId);
         recyclerQuizzes.setAdapter(quizzesAdapter);
     }
 
     private void callApiGetQuizzes() {
-        Call<List<QuizResponse>> call = RetrofitInstance.getRetrofitInstance().create(UserService.class).getQuizzes(userId);
+        Call<List<QuizResponse>> call = RetrofitInstance.getRetrofitInstance().create(UserService.class).getQuizzes(type,userId);
         call.enqueue(new Callback<List<QuizResponse>>() {
             @Override
             public void onResponse(Call<List<QuizResponse>> call, Response<List<QuizResponse>> response) {
