@@ -6,6 +6,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.example.tiplearning.MainUserActivity;
 import com.example.tiplearning.fragment.ExerciseFragment;
+import com.example.tiplearning.fragment.HomeFragment;
 import com.example.tiplearning.fragment.QuizFragment;
 import com.example.tiplearning.fragment.ResultFragment;
 import com.example.tiplearning.fragment.SettingFragment;
@@ -24,10 +25,12 @@ public class FragmentAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position) {
             case 0:
-                return new ExerciseFragment(userId);
+                return new HomeFragment(userId);
             case 1:
-                return new QuizFragment(userId);
+                return new ExerciseFragment(userId);
             case 2:
+                return new QuizFragment(userId);
+            case 3:
                 return new ResultFragment(userId);
             default:
                 return new SettingFragment(userId);
@@ -36,6 +39,6 @@ public class FragmentAdapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return 4;
+        return 5;
     }
 }

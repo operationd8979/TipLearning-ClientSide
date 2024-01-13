@@ -56,17 +56,20 @@ public class MainUserActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-            if(item.getItemId()==R.id.navigation_exercise){
+            if(item.getItemId()==R.id.navigation_home){
                 viewPager.setCurrentItem(0, true);
                 return true;
-            } else if(item.getItemId()==R.id.navigation_quiz){
+            } else if(item.getItemId()==R.id.navigation_exercise){
                 viewPager.setCurrentItem(1, true);
                 return true;
-            } else if(item.getItemId()==R.id.navigation_result){
+            } else if(item.getItemId()==R.id.navigation_quiz){
                 viewPager.setCurrentItem(2, true);
                 return true;
-            } else if(item.getItemId()==R.id.navigation_setting){
+            } else if(item.getItemId()==R.id.navigation_result){
                 viewPager.setCurrentItem(3, true);
+                return true;
+            } else if(item.getItemId()==R.id.navigation_setting){
+                viewPager.setCurrentItem(4, true);
                 return true;
             }
             return false;

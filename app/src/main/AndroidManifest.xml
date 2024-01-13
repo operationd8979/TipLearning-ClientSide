@@ -36,6 +36,9 @@
         <activity
             android:name=".MainUserActivity"
             android:exported="true" />
+        <activity
+            android:name=".SentenceActivity"
+            android:exported="true" />
     </application>
 
 
