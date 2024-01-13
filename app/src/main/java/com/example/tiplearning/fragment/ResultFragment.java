@@ -24,9 +24,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.PopupMenu;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.tiplearning.R;
+import com.example.tiplearning.model.runtime.QuizResponse;
 import com.example.tiplearning.model.runtime.RequestFindQuiz;
 import com.example.tiplearning.retrofit.RetrofitInstance;
 import com.example.tiplearning.service.UserService;
@@ -65,6 +67,9 @@ public class ResultFragment extends Fragment {
 
     private ProgressDialog progressDialog;
     private TextRecognizer textRecognizer;
+
+    private RadioGroup radioGroup;
+    private String type = "ENGLISH";
 
 
     public ResultFragment(String userId) {
@@ -105,7 +110,6 @@ public class ResultFragment extends Fragment {
             }
         });
 
-
         btnCreateQuiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -113,10 +117,21 @@ public class ResultFragment extends Fragment {
                 if(query.equals("")){
                     Toast.makeText(getActivity(), "Please recognize text", Toast.LENGTH_SHORT).show();
                 }else{
-//                    String[] questions = query.split("\\n");
-//                    Toast.makeText(getActivity(), Integer.toString(questions.length), Toast.LENGTH_SHORT).show();
-                    Toast.makeText(getActivity(), "Please wait", Toast.LENGTH_SHORT).show();
-                    //extractQuestionsAndAnswers(query);
+                    callApiCreateQuiz(query);
+                }
+            }
+        });
+
+        radioGroup = view.findViewById(R.id.rdGroupTypeResult);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.rdEnglistR) {
+                    type = "ENGLISH";
+                } else if (checkedId == R.id.rdItR) {
+                    type = "IT";
+                } else if (checkedId == R.id.rdDifferentR) {
+                    type = "DIFFERENT";
                 }
             }
         });
@@ -125,60 +140,76 @@ public class ResultFragment extends Fragment {
     }
 
     private static void extractQuestionsAndAnswers(String text) {
-        // Sử dụng regex để tìm các dòng bắt đầu bằng số
         Pattern pattern = Pattern.compile("^\\d+\\..*$", Pattern.MULTILINE);
         Matcher matcher = pattern.matcher(text);
-
         List<String> groupList = new ArrayList<>();
-
         while (matcher.find()) {
             String questionAndOptions = matcher.group();
             groupList.add(questionAndOptions);
-            Log.d("Chip", questionAndOptions);
         }
         groupList.add("end");
         List<String> mutiSe = Arrays.stream(text.split("\\n")).collect(Collectors.toList());
-        String question = "";
         int i = 0;
-        List<String> finalList = new ArrayList<>();
+        String question = "";
         for(String s:mutiSe){
             if(s.contains(groupList.get(i))){
-                finalList.add(question);
-                question = "";
                 i++;
+                question+=s+"\n";
             }
-            question+= " "+s;
+            else{
+                question+=s.substring(2)+"\n";
+            }
         }
-        finalList.add(question);
-        String questions = "";
-        for(String s:finalList){
-            questions+=s+"*";
-            Log.d("ChipEnd", s);
-        }
-        RequestFindQuiz requestFindQuiz = new RequestFindQuiz(finalList);
-        callApiQuerySearchQuiz(questions);
+//        String question = "";
+//        int i = 0;
+//        List<String> finalList = new ArrayList<>();
+//        int k = 0;
+//        for(String s:mutiSe){
+//            if(s.contains(groupList.get(i))){
+//                if(k==5){
+//                    finalList.add(question);
+//                }
+//                k = 0;
+//                question = "";
+//                i++;
+//            }
+//            if(k==0){
+//                question+= "\n"+s;
+//            }
+//            else{
+//                question+= "\n"+s.substring(2);
+//            }
+//            k++;
+//        }
+//        if(k==5){
+//            finalList.add(question);
+//        }
+//        String questions = "";
+//        for(String s:finalList){
+//            questions+=s+"\n";
+//            Log.d("ChipEnd", s);
+//        }
+        etRecognizedText.setText(question);
     }
 
-    private static void callApiQuerySearchQuiz(String questions) {
-        Call<List<String>> call = RetrofitInstance.getRetrofitInstance().create(UserService.class).query(questions,userId);
-        call.enqueue(new Callback<List<String>>() {
+    private void callApiCreateQuiz(String quizContent) {
+        Call<String> call = RetrofitInstance.getRetrofitInstance().create(UserService.class).createQuiz(quizContent,type,userId);
+        call.enqueue(new Callback<String>() {
             @Override
-            public void onResponse(Call<List<String>> call, Response<List<String>> response) {
-                if (response.isSuccessful()) {
-                    List<String> data = response.body();
-                    etRecognizedText.setText("");
-                    int i = 0;
-                    for(String s:data){
-                        Log.d("ChipEnd", s);
-                        etRecognizedText.append(i+++"."+s+"\n");
-                    }
-                } else {
-                    Log.d("ChipEnd", "Error: " + response.message());
-                }
+            public void onResponse(Call<String> call, Response<String> response) {
+                Toast.makeText(getActivity(), "Đã gửi lên máy chủ", Toast.LENGTH_SHORT).show();
+                etRecognizedText.setText("");
+//                if (response.isSuccessful()) {
+//                    showToast("Đã gửi báo cáo thành công");
+//                } else {
+//                    showToast("Đã gửi báo cáo thất bại");
+//                }
             }
-            @Override
-            public void onFailure(Call<List<String>> call, Throwable t) {
-                Log.e("Network Request", "Error", t);
+            @Override//                Log.e("Network Request", "Error", t);
+
+            public void onFailure(Call<String> call, Throwable t) {
+                Toast.makeText(getActivity(), "Đã gửi lên máy chủ", Toast.LENGTH_SHORT).show();
+                etRecognizedText.setText("");
             }
         });
     }
@@ -195,6 +226,8 @@ public class ResultFragment extends Fragment {
                         progressDialog.dismiss();
                         Log.d("TAG", "onSuccess: recognizedText: "+text.getText());
                         etRecognizedText.setText(text.getText());
+                        //extractQuestionsAndAnswers(text.getText());
+                        radioGroup.setVisibility(View.VISIBLE);
                     })
                     .addOnFailureListener(e -> {
                         progressDialog.dismiss();

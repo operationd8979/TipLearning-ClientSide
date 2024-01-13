@@ -36,5 +36,7 @@ public interface UserService {
     @GET("user/reportQuiz")
     Call<String> reportQuiz(@Query("quizId") String quizId,@Query("userId") String userId);
 
+    @GET("user/createQuiz")
+    Call<String> createQuiz(@Query("quizContent") String quizContent, @Query("quizType") String quizType,@Query("userId") String userId);
 
 }

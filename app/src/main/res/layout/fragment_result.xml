@@ -46,12 +46,53 @@
                 android:textSize="20dp"
                 android:textStyle="bold"/>
             <EditText
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="10dp"
                 android:id="@+id/etCreateQuiz"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:textColor="@color/black"
                 />
+
+            <RadioGroup
+                android:visibility="gone"
+                android:background="@color/white"
+                android:id="@+id/rdGroupTypeResult"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:orientation="horizontal"
+                android:weightSum="3">
+                <RadioButton
+                    android:checked="true"
+                    android:id="@+id/rdEnglistR"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="English"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+                <RadioButton
+                    android:id="@+id/rdItR"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="CNTT"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+                <RadioButton
+                    android:id="@+id/rdDifferentR"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="Khác"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+            </RadioGroup>
 
             <Button
                 android:id="@+id/btnCreateQuiz"

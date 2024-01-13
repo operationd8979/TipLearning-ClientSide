@@ -189,6 +189,10 @@ public class QuizFragment extends Fragment {
                     int i = 0;
                     for(String s:data){
                         Log.d("ChipEnd", s);
+                        if(i==0){
+                            i++;
+                            continue;
+                        }
                         etRecognizedText.append(i+++"."+s+"\n");
                     }
                 } else {
